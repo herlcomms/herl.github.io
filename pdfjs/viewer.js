@@ -27,7 +27,7 @@
 
 'use strict';
 
-var DEFAULT_URL =  "HERL Q3 2025 Newsletter";
+var DEFAULT_URL =  "2025_HERL_Q3-Newsletter.pdf";
 var DEFAULT_SCALE_DELTA = 1.1;
 var MIN_SCALE = 0.25;
 var MAX_SCALE = 10.0;
@@ -8194,5 +8194,6 @@ window.addEventListener('afterprint', function afterPrint(evt) {
         window.requestAnimationFrame(resolve);
       });
 })();
+
 
 
