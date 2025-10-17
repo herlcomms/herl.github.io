@@ -2289,19 +2289,15 @@ var SecondaryToolbar = {
 
   presentationModeClick:   function togglePageFullscreen() {
       var magazine = document.getElementById("magiframe");
-  if (magazine.fullscreenElement) {
-    magazine.exitFullscreen();
-  } else {
-    if (magazine.documentElement.requestFullscreen) {
-      magazine.documentElement.requestFullscreen();
-    } else if (magazine.documentElement.mozRequestFullScreen) {
-      magazine.documentElement.mozRequestFullScreen();
-    } else if (magazine.documentElement.webkitRequestFullscreen) {
-      magazine.documentElement.webkitRequestFullscreen();
-    } else if (magazine.documentElement.msRequestFullscreen) {
-      magazine.documentElement.msRequestFullscreen();
-    }
+ 
+  if (magazine.requestFullscreen) {
+    magazine.requestFullscreen();
+  } else if (magazine.webkitRequestFullscreen) { /* Safari */
+    magazine.webkitRequestFullscreen();
+  } else if (magazine.msRequestFullscreen) { /* IE11 */
+    magazine.msRequestFullscreen();
   }
+
 },
 
 
