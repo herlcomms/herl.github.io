@@ -52,6 +52,7 @@ var MAX_AUTO_SCALE = 1.25;
 var SCROLLBAR_PADDING = 40;
 var VERTICAL_PADDING = 5;
 
+
 // optimised CSS custom property getter/setter
 var CustomStyle = (function CustomStyleClosure() {
 
@@ -2279,10 +2280,30 @@ var SecondaryToolbar = {
   },
 
   // Event handling functions.
-  presentationModeClick: function secondaryToolbarPresentationModeClick(evt) {
-    PDFViewerApplication.requestPresentationMode();
-    this.close();
-  },
+  //presentationModeClick: function secondaryToolbarPresentationModeClick(evt) {
+  //  PDFViewerApplication.requestPresentationMode();
+  //  this.close();
+  //},
+
+    // Event handling functions.
+
+  presentationModeClick:   function togglePageFullscreen() {
+      var magazine = document.getElementById("magiframe");
+  if (magazine.fullscreenElement) {
+    magazine.exitFullscreen();
+  } else {
+    if (magazine.documentElement.requestFullscreen) {
+      magazine.documentElement.requestFullscreen();
+    } else if (magazine.documentElement.mozRequestFullScreen) {
+      magazine.documentElement.mozRequestFullScreen();
+    } else if (magazine.documentElement.webkitRequestFullscreen) {
+      magazine.documentElement.webkitRequestFullscreen();
+    } else if (magazine.documentElement.msRequestFullscreen) {
+      magazine.documentElement.msRequestFullscreen();
+    }
+  }
+},
+
 
   openFileClick: function secondaryToolbarOpenFileClick(evt) {
     document.getElementById('fileInput').click();
@@ -8194,4 +8215,3 @@ window.addEventListener('afterprint', function afterPrint(evt) {
         window.requestAnimationFrame(resolve);
       });
 })();
-
